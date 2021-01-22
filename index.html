@@ -1,0 +1,46 @@
+<!--
+	dplc-filter
+    Copyright (C) 2021 Gemeente Den Haag, Netherlands
+    Developed by Jasper Vries
+ 
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+ 
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+ 
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>dpl.c filter</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <h1>dpl.c filter</h1>
+    <p>Filter om dpl.c bestanden op te schonen voordat deze in MobiMaestro ingelezen worden. Doel is om foutieve koppelingen door MobiMaestro te beperken. Merk op dat dit filter niet alle foutieve interpretatie door MobiMaestro kan oplossen.</p>
+    <p>Werkwijze: plak de inhoud van een dpl.c bestand in onderstaand tekstvak. Kies de gewenste opties en klik op Voorbeeld om het resultaat eerst te zien of Download om het meteen als bestand op te slaan.</p>
+    
+    <textarea id="input"></textarea><br>
+    <input type="checkbox" id="c-comments" checked> <label for="c-comments">Commentaar verwijderen</label><br>
+    <input type="checkbox" id="c-NRus" checked> <label for="c-NRus">NR_us-regels verwijderen</label><br>
+    <input type="checkbox" id="c-uskopp"> <label for="c-uskopp">us[us*kopp*] verwijderen</label><br>
+    <input type="checkbox" id="c-iskopp"> <label for="c-iskopp">is[is*kopp*] verwijderen</label><br>
+    <button id="preview">Voorbeeld</button> <button id="download">Download</button>
+
+    <script src="dplc-filter.js"></script>
+
+    <h2>Gebruikssuggestie</h2>
+    <p>Niet de originele dpl.c bestanden in de softwaremap overschijven met de output van dit filter, maar als apart bestand houden alleen voor gebruik in MobiMaestro (en daarna kan het ook weer weg). De eerste twee vinkjes zijn eigenlijk altijd nuttig. De laatste twee zijn VRI-afhankelijk, die kunnen namelijk ook legitieme koppelsignalen er uit slopen. Heel kort door de bocht: voor TLC en IMFLOW gebruik je die laatste twee vinkjes wel, voor CCOL niet. Als er geen koppelsignalen zijn hebben ze geen effect. Het blijft zaak om in MobiMaestro altijd de configuratie van het kruispuntplaatje door te lopen op gekke dingen.</p>
+    <p><a href="https://github.com/VCDH/dplc-filter/">Broncode op GitHub</a></p>
+</body>
+</html>
