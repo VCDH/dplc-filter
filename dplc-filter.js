@@ -26,10 +26,14 @@ document.getElementById('preview').onclick = function() {
  }
 
  document.getElementById('download').onclick = function() {
+    //get textarea contents
     var dplc = document.getElementById('input').value;
     dplc = process_dplc(dplc);
+    //offer file download
     download_file(dplc);
  }
+
+ document.getElementById('file').addEventListener('change', open_file, false);
 
  function process_dplc(dplc) {
     //process text
@@ -69,3 +73,16 @@ document.getElementById('preview').onclick = function() {
     a.click();
     a.remove();
  }
+
+function open_file(event) {
+    var file = event.target.files[0];
+    if (!file) {
+        return;
+    }
+    var filereader = new FileReader();
+    filereader.onload = function(event) {
+        var contents = event.target.result;
+        document.getElementById('input').value = contents;
+    };
+    filereader.readAsText(file);
+}
